@@ -7,10 +7,10 @@ void main() {
   return runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white10,
         appBar: AppBar(
           title: Text('Dicee'),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white54,
         ),
         body: DicePage(),
       ),
@@ -25,13 +25,14 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   int leftDice = 1;
-
+  int sum = 0;
   int rightDice = 1;
   void changeFace() {
     setState(
       () {
         rightDice = Random().nextInt(6) + 1;
         leftDice = Random().nextInt(6) + 1;
+        sum = leftDice + rightDice;
       },
     );
   }
@@ -50,7 +51,7 @@ class _DicePageState extends State<DicePage> {
                 },
                 child: Image.asset(
                   'images/dice$leftDice.png',
-                  color: Colors.teal,
+                  color: Colors.blue,
                 ),
               ),
             ),
@@ -68,6 +69,9 @@ class _DicePageState extends State<DicePage> {
                 ),
               ),
             ),
+          ),
+          Text(
+            '$sum',
           )
         ],
       ),
